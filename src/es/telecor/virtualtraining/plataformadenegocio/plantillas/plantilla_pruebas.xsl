@@ -9,20 +9,18 @@
 -->
 
 
-<xs:schema attributeFormDefault="unqualified" 
-           elementFormDefault="qualified" 
-           targetNamespace="http://www.plataformadenegocio.es/Empaquetador" 
-           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="pruebas">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="prueba" minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="prueba" maxOccurs="unbounded" minOccurs="1">
           <xs:complexType>
             <xs:sequence>
               <xs:element type="xs:string" name="error"/>
               <xs:element type="xs:string" name="como_probar"/>
+              <xs:element type="xs:string" name="afecta"/>
             </xs:sequence>
-            <xs:attribute type="xs:string" name="autor"/>
+            <xs:attribute type="xs:string" name="autor" use="optional"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>
