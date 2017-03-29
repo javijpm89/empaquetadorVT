@@ -85,6 +85,12 @@ public class ComprobadorEstructuraAxon {
     public boolean compruebaIntegridadJavauser(String proyecto, String cliente) {
         boolean resultado = false;
 
+        if (proyecto.equals(cliente)){}
+            else {
+            // Si el proyecto es distinto al cliente significa que es un paquete de entornos
+            return resultado;
+        }
 
+    return resultado;
     }
 }
