@@ -73,4 +73,18 @@ public class ComprobadorEstructuraAxon {
         }
         return resultado;
     }
+
+    /**
+     *
+     * @param proyecto Proyecto al cual pertenece el paquete que se va a generar
+     * @param cliente Entorno concreto del paquete
+     * @return Resultado de la comprobacion
+     */
+
+
+    public boolean compruebaIntegridadJavauser(String proyecto, String cliente) {
+        boolean resultado = false;
+
+
+    }
 }
