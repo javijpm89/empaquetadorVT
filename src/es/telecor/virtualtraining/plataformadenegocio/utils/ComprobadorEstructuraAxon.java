@@ -41,7 +41,7 @@ public class ComprobadorEstructuraAxon {
 
         for (File f : listFiles) {
             fileName = f.getName();
-            if (fileName.equalsIgnoreCase("prv") || fileName.equalsIgnoreCase("mixto") || fileName.equalsIgnoreCase("web")) {
+            if (fileName.equals("prv") || fileName.equals("mixto") || fileName.equals("web")) {
                 resultado = true;
             } else {
                 resultado = false;
