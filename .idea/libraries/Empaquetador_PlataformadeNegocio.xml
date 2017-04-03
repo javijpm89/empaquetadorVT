@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Empaquetador_PlataformadeNegocio">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/Empaquetador_PlataformadeNegocio.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

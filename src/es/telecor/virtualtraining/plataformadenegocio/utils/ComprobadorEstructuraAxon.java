@@ -8,17 +8,18 @@ package es.telecor.virtualtraining.plataformadenegocio.utils;
 import java.io.File;
 
 /**
- *
  * @author javi
  */
 public class ComprobadorEstructuraAxon {
 
     private final String dirComprobacion;
     private final String proyecto;
+    private final String tipo;
 
-    public ComprobadorEstructuraAxon(String _dirComprobacion, String _proyecto) {
+    public ComprobadorEstructuraAxon(String _dirComprobacion, String _proyecto, String _tipo) {
         dirComprobacion = _dirComprobacion;
         proyecto = _proyecto;
+        tipo = _tipo;
     }
 
     /**
@@ -40,7 +41,7 @@ public class ComprobadorEstructuraAxon {
 
         for (File f : listFiles) {
             fileName = f.getName();
-            if (fileName.equalsIgnoreCase("prv") || fileName.equalsIgnoreCase("mixto") || fileName.equalsIgnoreCase("web")) {
+            if (fileName.equals("prv") || fileName.equals("mixto") || fileName.equals("web")) {
                 resultado = true;
             } else {
                 resultado = false;
@@ -67,10 +68,40 @@ public class ComprobadorEstructuraAxon {
         for (File f : listFiles) {
             file = f.getName();
 
-            if (file.equalsIgnoreCase(proyecto)) {
+            if (file.equals(proyecto)) {
                 resultado = true;
             }
         }
+        return resultado;
+    }
+
+    /**
+     * @return Resultado de la comprobacion
+     */
+
+
+    public boolean compruebaIntegridadJavauser() {
+        boolean resultado = false;
+
+        // Si el proyecto es de tipo cliente
+        if (this.tipo.equalsIgnoreCase("general")) {
+            File dirJavauser = new File(this.dirComprobacion + "/engine/javauser/");
+            File[] files = dirJavauser.listFiles();
+
+            for (File f : files) {
+                String nameFile = f.getName();
+
+                if (f.isFile() && f.getName().equals("javauser.jar"))
+                    resultado = true;
+                else if (f.isDirectory() && (nameFile.equalsIgnoreCase("userexit") || nameFile.equalsIgnoreCase("energias") || nameFile.equalsIgnoreCase("vt")))
+                    resultado = true;
+                else
+                    resultado = false;
+            }
+        } else {
+            resultado = false;
+        }
+
         return resultado;
     }
 }
