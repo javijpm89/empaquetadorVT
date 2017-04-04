@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+Fichero de plantilla XML pruebas
+-->
+<xs:schema targetNamespace="http://plataformadenegocio.es/pruebas"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           xmlns:tns="http://plataformadenegocio.es/pruebas">
+    <xs:element name="pruebas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="prueba" type="tns:prueba" minOccurs="1" maxOccurs="unbounded">
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="prueba">
+        <xs:sequence>
+            <xs:element name="error" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="como_probar" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="afecta" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="dependencias" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="autor" type="xs:string"></xs:attribute>
+    </xs:complexType>
+</xs:schema>
