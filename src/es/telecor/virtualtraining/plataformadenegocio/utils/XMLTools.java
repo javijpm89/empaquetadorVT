@@ -27,7 +27,6 @@ public class XMLTools {
     
     public XMLTools(String _dirBase){
         this.dirBase = _dirBase;
-        
     }
     
     public Document validateXML(String _tipoXML, String fichero) throws ParserConfigurationException, SAXException, IOException{
