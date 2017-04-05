@@ -5,9 +5,15 @@
  */
 package es.telecor.virtualtraining.plataformadenegocio.utils;
 
+import com.sun.xml.internal.ws.util.Pool;
+import es.telecor.virtualtraining.plataformadenegocio.model.Pruebas;
+import es.telecor.virtualtraining.plataformadenegocio.model.Querys;
 import org.w3c.dom.Document;
 import java.io.File;
 import java.io.IOException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -54,4 +60,19 @@ public class XMLTools {
         return doc;
     }
     
+    public Querys extractQueryData(String fileToProcess) throws JAXBException{
+        Querys myQuerys = null;
+        JAXBContext jc = JAXBContext.newInstance("es.telecor.virtualtraining.plataformadenegocio.model.Querys");
+        Unmarshaller um = jc.createUnmarshaller();
+        myQuerys = (Querys) um.unmarshal(new File(this.dirBase+fileToProcess));
+        return myQuerys;
+    }
+    
+    public Pruebas extractPruebasData() throws JAXBException{
+        Pruebas myPruebas = null;
+        JAXBContext jc = JAXBContext.newInstance("es.telecor.virtualtraining.plataformadenegocio.model.Pruebas");
+        Unmarshaller um = jc.createUnmarshaller();
+        myPruebas = (Pruebas) um.unmarshal(new File(this.dirBase+"pruebas.xml"));
+        return myPruebas;
+    }
 }

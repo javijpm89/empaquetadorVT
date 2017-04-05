@@ -6,11 +6,13 @@
 package es.telecor.virtualtraining.plataformadenegocio.model;
 
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author javi
  */
+@XmlRootElement
 public class Querys {
     
     private String autor;

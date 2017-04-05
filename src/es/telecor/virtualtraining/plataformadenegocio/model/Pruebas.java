@@ -5,10 +5,13 @@
  */
 package es.telecor.virtualtraining.plataformadenegocio.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author javi
  */
+@XmlRootElement
 public class Pruebas {
     
     private String autor;

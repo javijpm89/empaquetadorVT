@@ -7,8 +7,6 @@ package es.telecor.virtualtraining.plataformadenegocio.utils;
 
 import gudusoft.gsqlparser.EDbVendor;
 import gudusoft.gsqlparser.TGSqlParser;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -16,13 +14,12 @@ import java.util.Iterator;
  */
 public class ComprobadorFicheroSQL {
 
-    private String dirOrigen;
-    private String gestor;
+    private final String gestor;
     private EDbVendor motor;
-    private TGSqlParser sqlparser;
+    private final TGSqlParser sqlparser;
 
-    public ComprobadorFicheroSQL(String _dirOrigen, String _gestor) {
-        this.dirOrigen = _dirOrigen;
+    public ComprobadorFicheroSQL(String _gestor) {
+        
         this.gestor = _gestor;
 
         if (this.gestor.equals("mysql")) {
@@ -40,9 +37,10 @@ public class ComprobadorFicheroSQL {
         sqlparser = new TGSqlParser(motor);
     }
 
-    public boolean validateQuery(String queryToValidate) {
+    public int validateQuery(String queryToValidate) {
         sqlparser.setSqltext(queryToValidate);
-        return true;
+        int resultado = sqlparser.parse();
+        return resultado;
     }
 
 }
