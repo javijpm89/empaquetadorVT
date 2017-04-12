@@ -25,6 +25,16 @@ public class Zipper {
     }
 
     public void generarZip(String originPath, String fileName, String destinationPath) throws FileNotFoundException {
+        
+        
+        // Comprobamos que el directorio final contenga / al final del string
+        
+        int length = destinationPath.length();
+        char lastCharacter = destinationPath.charAt(length);
+        if (lastCharacter == '/') {
+        } else {
+            destinationPath = destinationPath + "/";
+        }
 
         FileOutputStream fos = new FileOutputStream(new File(destinationPath + fileName));
         ZipOutputStream zos = new ZipOutputStream(fos);
@@ -38,7 +48,7 @@ public class Zipper {
                 zos.putNextEntry(entrada);
             }
         } catch (IOException ex) {
-            
+
         } finally {
             try {
                 zos.close();
