@@ -5,6 +5,7 @@
  */
 package es.telecor.virtualtraining.plataformadenegocio.utils;
 
+import es.telecor.virtualtraining.plataformadenegocio.model.ResultadoQuery;
 import gudusoft.gsqlparser.EDbVendor;
 import gudusoft.gsqlparser.TGSqlParser;
 
@@ -37,9 +38,14 @@ public class ComprobadorFicheroSQL {
         sqlparser = new TGSqlParser(motor);
     }
 
-    public int validateQuery(String queryToValidate) {
+    public ResultadoQuery validateQuery(String queryToValidate) {
+        ResultadoQuery resultado = new ResultadoQuery();
         sqlparser.setSqltext(queryToValidate);
-        int resultado = sqlparser.parse();
+        
+        resultado.setResultadoParser(sqlparser.parse());
+        resultado.setErrorCount(sqlparser.getErrorCount());
+        resultado.setErrorMessage(sqlparser.getErrormessage());
+        
         return resultado;
     }
 
